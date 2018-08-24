@@ -1,0 +1,383 @@
+---
+# Show Tech Basic Feature Definition
+  feature:
+  -
+    feature_desc: "Show Tech Basic"
+    feature_name: basic
+    cli_cmds:
+      - "show version"
+      - "show system"
+      - "show interface mgmt"
+      - "show interface dom"
+      - "show interface"
+      - "show interface transceiver"
+      - "show vlan"
+      - "show ntp status"
+      - "show events"
+      - "show core-dump"
+
+# Show Tech NTP Feature Definition
+  feature:
+  -
+    feature_desc: "Network Time Protocol"
+    feature_name: ntp
+    cli_cmds:
+      - "show ntp associations"
+      - "show ntp authentication-keys"
+      - "show ntp trusted-keys"
+      - "show ntp statistics"
+
+# Show Tech LLDP Feature Definition
+  feature:
+  -
+    feature_desc: "Link Layer Discovery Protocol"
+    feature_name: lldp
+    cli_cmds:
+      - "show lldp configuration"
+      - "show lldp statistics"
+      - "show lldp neighbor-info"
+
+# Show Tech LAG Feature Definition
+  feature:
+  -
+    feature_desc: "Link Aggregation Protocol"
+    feature_name: lag
+    cli_cmds:
+      - "show lacp configuration"
+      - "show lacp aggregates"
+      - "show lacp interfaces"
+
+# Show Tech QoS Feature Definition
+  feature:
+  -
+    feature_desc: "Quality of Service"
+    feature_name: qos
+    cli_cmds:
+      - show qos trust
+      - show qos cos-map
+      - show qos dscp-map
+      - show qos queue-profile
+      - show qos schedule-profile
+      - show interface queues
+
+    ovsdb:
+      -
+        table:
+          -
+            table_name: system
+            col_names:
+              - qos_config
+              - qos_status
+              - qos_dscp_map_entries
+              - qos_cos_map_entries
+              - q_profile
+              - qos
+      -
+        table:
+          -
+            table_name: port
+            col_names:
+              - qos_config
+              - q_profile
+              - qos
+              - qos_status
+      -
+        table:
+          -
+            table_name: interface
+            col_names:
+              - queue_tx_bytes
+              - queue_tx_packets
+              - queue_tx_errors
+      -
+        table:
+          -
+            table_name: QoS_DSCP_Map_Entry
+            col_names:
+              - code_point
+              - local_priority
+              - priority_code_point
+              - color
+              - description
+              - hw_defaults
+              - other_config
+              - external_ids
+      -
+        table:
+          -
+            table_name: QoS_COS_Map_Entry
+            col_names:
+              - code_point
+              - local_priority
+              - color
+              - description
+              - hw_defaults
+              - other_config
+              - external_ids
+      -
+        table:
+          -
+            table_name: Q_Profile
+            col_names:
+              - name
+              - q_profile_entries
+              - hw_default
+              - other_config
+              - external_ids
+      -
+        table:
+          -
+            table_name: Q_Profile_Entry
+            col_names:
+              - local_priorities
+              - description
+              - hw_default
+              - other_config
+              - external_ids
+      -
+        table:
+          -
+            table_name: QoS
+            col_names:
+              - name
+              - queues
+              - hw_default
+              - other_config
+              - external_ids
+      -
+        table:
+          -
+            table_name: Queue
+            col_names:
+              - algorithm
+              - weight
+              - hw_default
+              - other_config
+              - external_ids
+
+# Show Tech ACL Feature Definition
+  feature:
+  -
+    feature_desc: "Access Control Lists"
+    feature_name: acl
+    cli_cmds:
+      - show access-list commands configuration
+      - show access-list commands
+      - show access-list log-timer
+
+    ovsdb:
+      -
+        table:
+          -
+            table_name: system
+            col_names:
+              - acls
+              - other_config
+              - other_info
+      -
+        table:
+          -
+            table_name: port
+            col_names:
+              - aclv4_in_applied
+              - aclv4_in_cfg
+              - aclv4_in_cfg_version
+              - aclv4_in_status
+              - aclv4_in_statistics
+              - aclv4_in_statistics_clear_requested
+              - aclv4_in_statistics_clear_performed
+      -
+        table:
+          -
+            table_name: vlan
+            col_names:
+              - aclv4_in_applied
+              - aclv4_in_cfg
+              - aclv4_in_cfg_version
+              - aclv4_in_status
+              - aclv4_in_statistics
+              - aclv4_in_statistics_clear_requested
+              - aclv4_in_statistics_clear_performed
+      -
+        table:
+          -
+            table_name: ACL
+            col_names:
+              - name
+              - list_type
+              - cur_aces
+              - cfg_aces
+              - in_progress_aces
+              - cfg_version
+              - in_progress_version
+              - status
+      -
+        table:
+          -
+            table_name: ACL_Entry
+            col_names:
+              - comment
+              - action
+              - src_ip
+              - dst_ip
+              - protocol
+              - src_l4_port_min
+              - src_l4_port_max
+              - src_l4_port_range_reverse
+              - dst_l4_port_min
+              - dst_l4_port_max
+              - dst_l4_port_range_reverse
+              - log
+              - count
+
+# Show Tech ECMP Feature Definition
+  feature:
+  -
+    feature_desc: "IP ECMP Load Balancing"
+    feature_name: ecmp
+    cli_cmds:
+      - "show ip ecmp"
+
+# Show Tech MSTP Feature Definition
+  feature:
+  -
+    feature_desc: "Multiple Spanning Tree Protocol"
+    feature_name: mstp
+    cli_cmds:
+      - "show spanning-tree detail"
+      - "show spanning-tree mst-config"
+      - "show spanning-tree mst"
+
+# Show Tech Version Feature Definition
+  feature:
+  -
+    feature_desc: "Image versioning scheme"
+    feature_name: version
+    cli_cmds:
+      - "show version detail"
+
+# Show ospf
+  feature:
+  -
+    feature_desc: "Open Shortest Path First version 2 Protocol"
+    feature_name: ospfv2
+    cli_cmds:
+      - "show ip ospf"
+      - "show ip ospf interface"
+      - "show ip ospf neighbor"
+      - "show ip ospf route"
+
+# Show Tech Unicast Routing Feature Definition
+  feature:
+  -
+    feature_desc: "Unicast Routing Information"
+    feature_name: ucast-routing
+    cli_cmds:
+      - "show ip route"
+      - "show ipv6 route"
+      - "show rib"
+      - "show ip interface"
+      - "show ipv6 interface"
+      - "show arp"
+      - "show ipv6 neighbors"
+      - "show ip ecmp"
+
+# Show Tech COPP Feature Definition
+  feature:
+  -
+    feature_desc: "Control Plane Policing"
+    feature_name: copp
+    cli_cmds:
+      - "show copp statistics"
+
+# Show Tech DHCP Server Feature Definition
+  feature:
+  -
+    feature_desc: "Dynamic Host Configuration Protocol Server"
+    feature_name: dhcp-server
+    cli_cmds:
+      - "show dhcp-server"
+      - "show dhcp-server leases"
+
+# Show Tech TFTP Server Feature Definition
+  feature:
+  -
+    feature_desc: "Trivial File Transfer Protocol Server"
+    feature_name: tftp-server
+    cli_cmds:
+      - "show tftp-server"
+
+# Show Tech SNMP Feature Configurations
+  feature:
+  -
+    feature_desc: "SNMP"
+    feature_name: snmp
+    cli_cmds:
+     - "show snmp agent-port"
+     - "show snmp community"
+     - "show snmp system"
+     - "show snmp trap"
+     - "show snmpv3 users"
+
+# Show Tech SFTP Server Feature Definition
+  feature:
+  -
+    feature_desc: "SSH File Transfer Protocol Server"
+    feature_name: sftp-server
+    cli_cmds:
+      - "show sftp server"
+
+# Show Tech Source Interface Selection Feature Definition
+  feature:
+  -
+    feature_desc: "Source Interface Selection"
+    feature_name: source-interface-selection
+    cli_cmds:
+      - "show ip source-interface"
+      - "show ip source-interface tftp"
+
+# Show Tech LOOPBACK Feature Definition
+  feature:
+  -
+    feature_desc: "Loopback Interface"
+    feature_name: loopback
+    cli_cmds:
+      - "show interface loopback"
+
+# Show Tech AAA Feature Definition
+  feature:
+  -
+    feature_desc: "Authentication Authorization and Accounting"
+    feature_name: aaa
+    cli_cmds:
+      - "show aaa authentication"
+      - "show aaa authorization"
+      - "show aaa server-groups"
+      - "show tacacs-server"
+      - "show radius-server"
+
+# Show Tech VLAN Feature Definition
+  feature:
+  -
+    feature_desc: "Virtual Local Area Network"
+    feature_name: vlan
+    cli_cmds:
+      - "show vlan"
+      - "show vlan summary"
+      - "show vlan internal"
+
+# Show Tech ZTP Feature Definition
+  feature:
+  -
+    feature_desc: "Zero Touch Provisioning"
+    feature_name: ztp
+    cli_cmds:
+      - "show autoprovisioning"
+
+# Show Tech SFLOW Feature Definition
+  feature:
+  -
+    feature_desc: "sFlow"
+    feature_name: sflow
+    cli_cmds:
+      - "show sflow"

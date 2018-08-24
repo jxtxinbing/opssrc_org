@@ -1,0 +1,1945 @@
+categories:
+# - event_category: ABC
+#   description: 'Events related to ABC'
+#   category_rank: xx
+- event_category: LLDP
+  description: 'Events related to LLDP'
+  category_rank: 1
+
+- event_category: FAN
+  description: 'Events related to FAN'
+  category_rank: 2
+
+- event_category: POWER
+  description: 'Events related to POWER'
+  category_rank: 3
+
+- event_category: INTERFACE
+  description: 'Events related to INTERFACE'
+  category_rank: 4
+
+- event_category: LED
+  description: 'Events related to LED'
+  category_rank: 5
+
+- event_category: PORT
+  description: 'Events related to PORT'
+  category_rank: 6
+
+- event_category: SYS
+  description: 'Events related to system initialization'
+  category_rank: 7
+
+- event_category: TEMPERATURE
+  description: 'Events related to TEMPERATURE'
+  category_rank: 8
+
+- event_category: LOOPBACK
+  description: 'Events related to LOOPBACK'
+  category_rank: 9
+
+- event_category: SUBINTERFACE
+  description: 'Events related to Sub-Interface'
+  category_rank: 10
+
+- event_category: OSPFv2
+  description: 'Events related to OSPFv2'
+  category_rank: 11
+
+- event_category: SFLOW
+  description: 'Events related to sFlow'
+  category_rank: 12
+
+- event_category: NTP
+  description: 'Events related to NTP'
+  category_rank: 13
+
+- event_category: SUPPORTABILITY
+  description: 'Events related to Supportability'
+  category_rank: 14
+
+- event_category: LACP
+  description: 'Events related to LACP'
+  category_rank: 15
+
+- event_category: LAG
+  description: 'Events related to LAG'
+  category_rank: 16
+
+- event_category: COPP
+  description: 'Events related to control plane policing'
+  category_rank: 17
+
+- event_category: VLANINTERFACE
+  description: 'Events related to Vlaninterface'
+  category_rank: 18
+
+- event_category: L3INTERFACE
+  description: 'Events related to Layer 3 interface'
+  category_rank: 19
+
+- event_category: ECMP
+  description: 'Events related to ecmp'
+  category_rank: 20
+
+- event_category: ZEBRA
+  description: 'Events related to ZEBRA'
+  category_rank: 21
+
+- event_category: DHCP-TFTP-SERVER
+  description: 'Events related to DHCP-TFTP Server'
+  category_rank: 22
+
+- event_category: MSTP
+  description: 'Events related to multiple spanning-tree protocol'
+  category_rank: 23
+
+- event_category: VLAN
+  description: 'Events related to Virtual Local Area Network'
+  category_rank: 24
+
+- event_category: CPU-RX
+  description: 'Events related to CPU Routing'
+  category_rank: 25
+
+- event_category: BFD
+  description: 'Events related to Bidirectional Forwarding Detection'
+  category_rank: 26
+
+- event_category: AAA
+  description: 'Events related to AAA'
+  category_rank: 27
+
+event_definitions:
+#- event_name: XYZ_UP
+#  event_category: ABC
+#  event_ID : xxx001
+#  severity: LOG_INFO
+#  keys: key
+#  event_description_template:
+#      'XYZ is up with {key}'
+
+- event_name: LLDP_ENABLED
+  event_category: LLDP
+  event_ID : 1001
+  severity: LOG_INFO
+  keys: NA
+  description:
+     'This command enables the LLDP (Link Layer Discovery Protocol) feature in the device.'
+  event_description_template:
+      'LLDP Enabled'
+
+- event_name: LLDP_DISABLED
+  event_category: LLDP
+  event_ID : 1002
+  severity: LOG_INFO
+  keys: NA
+  description:
+     'This command disables the LLDP (Link Layer Discovery Protocol) feature in the device.'
+  event_description_template:
+      'LLDP Disabled'
+
+- event_name: LLDP_TX_TIMER
+  event_category: LLDP
+  event_ID : 1003
+  severity: LOG_INFO
+  keys: value
+  description:
+     'This command sets the LLDP status update interval in seconds which are transmitted to neighbors.'
+  event_description_template:
+      'Configured LLDP tx-timer with {value}'
+
+- event_name: LLDP_NEIGHBOUR_ADD
+  event_category: LLDP
+  event_ID : 1004
+  severity: LOG_INFO
+  keys: interface
+  description:
+     'This command displays detailed information about a particular neighbor connected to a particular interface.'
+  event_description_template:
+      'LLDP neighbour added on {interface}'
+
+- event_name: LLDP_NEIGHBOUR_UPDATE
+  event_category: LLDP
+  event_ID : 1005
+  severity: LOG_INFO
+  keys: interface
+  description:
+     'This command displays information about the switchs neighbors.'
+  event_description_template:
+      'LLDP neighbour update on {interface}'
+
+- event_name: LLDP_NEIGHBOUR_DELETE
+  event_category: LLDP
+  event_ID : 1006
+  severity: LOG_INFO
+  keys: interface
+  description:
+     'This command clears LLDP neighbor details.'
+  event_description_template:
+      'LLDP neighbour deleted on {interface}'
+
+- event_name: MGMT_PATTERN
+  event_category: LLDP
+  event_ID : 1007
+  severity: LOG_INFO
+  keys: value
+  description:
+     'This command sets the Management IP Address to be sent using LLDP TLV.'
+  event_description_template:
+      'Configured LLDP Management pattern {value}'
+
+- event_name: LLDP_TX_HOLD
+  event_category: LLDP
+  event_ID : 1008
+  severity: LOG_INFO
+  keys: hold
+  description:
+     'This command sets the amount of time (in seconds), a receiving device holds the information sent before discarding it.'
+  event_description_template:
+      'Configured LLDP tx-hold with {hold}'
+
+- event_name: FAN_COUNT
+  event_category: FAN
+  event_ID : 2001
+  severity: LOG_INFO
+  keys: count, subsystem
+  event_description_template:
+      'There are {count} total fans in subsystem {subsystem}'
+
+- event_name: FAN_SPEED
+  event_category: FAN
+  event_ID : 2002
+  severity: LOG_INFO
+  keys: subsystem, speedval, value
+  event_description_template:
+     'subsystem {subsystem} setting fan speed control register to {speedval}: {value}'
+
+- event_name: FAN_DIRECTION
+  event_category: FAN
+  event_ID : 2003
+  severity: LOG_INFO
+  keys: value
+  event_description_template:
+      'Direction is {value}'
+
+- event_name: POWER_COUNT
+  event_category: POWER
+  event_ID : 3001
+  severity: LOG_INFO
+  keys: count, subsystem
+  event_description_template:
+      'There are {count} psus in subsystem {subsystem}'
+
+- event_name: INTERFACE_UP
+  event_category: INTERFACE
+  event_ID : 4001
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Interface port_admin set to up for {interface} interface'
+
+- event_name: INTERFACE_DOWN
+  event_category: INTERFACE
+  event_ID : 4002
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Interface port_admin set to down for {interface} interface'
+
+- event_name: LED_COUNT
+  event_category: LED
+  event_ID : 5001
+  severity: LOG_INFO
+  keys: count, subsystem
+  event_description_template:
+      'There are {count} LED types in subsystem {subsystem}'
+
+- event_name: PORT_SOCKET_CREATION_FAIL
+  event_category: PORT
+  event_ID : 6001
+  severity: LOG_INFO
+  keys: error
+  event_description_template:
+      'Netlink socket creation failed {error}'
+
+- event_name: PORT_SOCKET_BIND_FAIL
+  event_category: PORT
+  event_ID : 6002
+  severity: LOG_INFO
+  keys: error
+  event_description_template:
+      'Netlink socket bind failed {error}'
+
+- event_name: PORT_MTU_FAIL
+  event_category: PORT
+  event_ID : 6003
+  severity: LOG_INFO
+  keys: mtu, interface
+  event_description_template:
+      'Netlink failed to set mtu {mtu} for interface {interface}'
+
+- event_name: PORT_INTERFACE_FAIL
+  event_category: PORT
+  event_ID : 6004
+  severity: LOG_INFO
+  keys: status, interface
+  event_description_template:
+      'Netlink failed to bring {status} the interface {interface}'
+
+- event_name: PORT_UNKNOWN_VLAN_POLICY
+  event_category: PORT
+  event_ID : 6005
+  severity: LOG_INFO
+  keys: policy
+  event_description_template:
+      'Unknown internal vlan policy {policy}'
+
+- event_name: PORT_VLAN_ALLOCATION_ERROR
+  event_category: PORT
+  event_ID : 6006
+  severity: LOG_INFO
+  keys: vlan
+  event_description_template:
+      'Error allocating internal vlan for port {vlan}'
+
+- event_name: SYS_FRU_DATA_READ_FAILURE
+  event_category: SYS
+  event_ID : 7001
+  severity: LOG_INFO
+  keys: NA
+  event_description_template:
+      'Failed to read FRU data from base system'
+
+- event_name: SYS_FRU_HEADER_READ_FAILURE
+  event_category: SYS
+  event_ID : 7002
+  severity: LOG_INFO
+  keys: NA
+  event_description_template:
+      'Failed to read FRU header'
+
+- event_name: SYS_FRU_EEPROM_HEADER_READ_FAILURE
+  event_category: SYS
+  event_ID : 7003
+  severity: LOG_INFO
+  keys: NA
+  event_description_template:
+      'Error reading FRU EEPROM Header'
+
+- event_name: SYS_INITIALIZE_DEVICE_FAILURE
+  event_category: SYS
+  event_ID : 7004
+  severity: LOG_INFO
+  keys: NA
+  event_description_template:
+      'Failed to intialize devices'
+
+- event_name: SYS_ALLOCATE_MEMORY_FAILURE
+  event_category: SYS
+  event_ID : 7005
+  severity: LOG_INFO
+  keys: value
+  event_description_template:
+      'Failed to allocate memory for {value}'
+
+- event_name: TEMP_SENSOR_UNRECOGNIZED
+  event_category: TEMPERATURE
+  event_ID : 8001
+  severity: LOG_INFO
+  keys: type
+  event_description_template:
+      'Unrecognized sensor type {type}'
+
+- event_name: TEMP_SENSOR_SHUTDOWN
+  event_category: TEMPERATURE
+  event_ID : 8002
+  severity: LOG_INFO
+  keys: name
+  event_description_template:
+      'Emergency shutdown initiated for sensor {name}'
+
+- event_name: LOOPBACK_CREATE
+  event_category: LOOPBACK
+  event_ID : 9001
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Loopback Interface {interface}, created'
+
+- event_name: LOOPBACK_DELETE
+  event_category: LOOPBACK
+  event_ID : 9002
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Loopback Interface {interface}, deleted'
+
+- event_name: LOOPBACK_IP_UPDATE
+  event_category: LOOPBACK
+  event_ID : 9003
+  severity: LOG_INFO
+  keys: interface, value
+  event_description_template:
+      'Loopback Interface {interface}, configured with ip address {value}'
+
+- event_name: LOOPBACK_IPV4_DELETE
+  event_category: LOOPBACK
+  event_ID : 9004
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Loopback Interface {interface}, ipv4 address deleted'
+
+- event_name: LOOPBACK_IPV6_DELETE
+  event_category: LOOPBACK
+  event_ID : 9005
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Loopback Interface {interface}, ipv6 address deleted'
+
+- event_name: LOOPBACK_ADMIN_STATE
+  event_category: LOOPBACK
+  event_ID : 9006
+  severity: LOG_INFO
+  keys: interface, state
+  event_description_template:
+      'Loopback Interface {interface}, configured administratively {state}'
+
+- event_name: SUBINTERFACE_CREATE
+  event_category: SUBINTERFACE
+  event_ID : 10001
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Sub-Interface {interface}, created'
+
+- event_name: SUBINTERFACE_DELETE
+  event_category: SUBINTERFACE
+  event_ID : 10002
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Sub-Interface {interface}, deleted'
+
+- event_name: SUBINTERFACE_IP_UPDATE
+  event_category: SUBINTERFACE
+  event_ID : 10003
+  severity: LOG_INFO
+  keys: interface, value
+  event_description_template:
+      'Sub-Interface {interface}, configured with ip address {value}'
+
+- event_name: SUBINTERFACE_IPV4_DELETE
+  event_category: SUBINTERFACE
+  event_ID : 10004
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Sub-Interface {interface}, ipv4 address deleted'
+
+- event_name: SUBINTERFACE_IPV6_DELETE
+  event_category: SUBINTERFACE
+  event_ID : 10005
+  severity: LOG_INFO
+  keys: interface
+  event_description_template:
+      'Sub-Interface {interface}, ipv6 address deleted'
+
+- event_name: SUBINTERFACE_ENC_UPDATE
+  event_category: SUBINTERFACE
+  event_ID : 10006
+  severity: LOG_INFO
+  keys: interface, value
+  event_description_template:
+      'Sub-Interface {interface}, configured with dot encapsulation {value}'
+
+- event_name: SUBINTERFACE_ADMIN_STATE
+  event_category: SUBINTERFACE
+  event_ID : 10007
+  severity: LOG_INFO
+  keys: interface, state
+  event_description_template:
+      'Sub-Interface {interface}, configured administratively {state}'
+
+- event_name: SUBINTERFACE_VLAN_CREATE_ERR
+  event_category: SUBINTERFACE
+  event_ID : 10008
+  severity: LOG_ERR
+  keys: interface, vlanid
+  description:
+      'logs errors while creating subinterface encapsulation dot1q.'
+  event_description_template:
+      'Sub-Interface {interface}, failed to create encapsulation dot1q {vlanid}'
+
+- event_name: SUBINTERFACE_VLAN_DESTROY_ERR
+  event_category: SUBINTERFACE
+  event_ID : 10009
+  severity: LOG_ERR
+  keys: interface, vlanid, err
+  description:
+      'logs errors while destroying subinterface encapsulation dot1q.'
+  event_description_template:
+      'Sub-Interface {interface}, failed to destroy subinterface encapsulation dot1q {vlanid} err: {err}'
+
+- event_name: SUBINTERFACE_L3INTF_CREATE_ERR
+  event_category: SUBINTERFACE
+  event_ID : 10010
+  severity: LOG_ERR
+  keys: interface
+  description:
+      'logs errors while creating subinterface.'
+  event_description_template:
+      'Sub-Interface {interface}, failed to create an l3 interface'
+
+- event_name: SUBINTERFACE_L3INTF_DELETE_ERR
+  event_category: SUBINTERFACE
+  event_ID : 10011
+  severity: LOG_ERR
+  keys: interface, err
+  description:
+      'logs errors while destroying subinterface.'
+  event_description_template:
+      'Sub-Interface {interface}, failed to delete an l3 interface, err: {err}'
+
+- event_name: SUBINTERFACE_IPV6_UPDATE
+  event_category: SUBINTERFACE
+  event_ID : 10012
+  severity: LOG_INFO
+  keys: interface, value
+  event_description_template:
+      'Sub-Interface {interface}, configured with ipv6 address {value}'
+
+- event_name: OSPFv2_ROUTE
+  event_category: OSPFv2
+  event_ID : 11001
+  severity: LOG_INFO
+  keys: event, prefix, route
+  description:
+    'Logs OSPFv2 route add and delete.'
+  event_description_template:
+      '{event} with {destination} {nexthops}'
+
+- event_name: OSPFv2_NSM_STATE
+  event_category: OSPFv2
+  event_ID : 11002
+  severity: LOG_INFO
+  keys: router-id, ospf-interface, state, next_state, event
+  description:
+    'Logs the changes in OSPFv2 neighbour state machine.'
+  event_description_template:
+      'AdjChg: Nbr {router-id} on {ospf-interface}: {state} -> {next_state} ({event})'
+
+- event_name: OSPFv2_ROUTER_ID
+  event_category: OSPFv2
+  event_ID : 11003
+  severity: LOG_INFO
+  keys: old, new
+  description:
+    'Logs the changes in the router-id.'
+  event_description_template:
+      'Router-id  updated from {old} to {new}'
+
+- event_name: OSPFv2_FP_ERR
+  event_category: OSPFv2
+  event_ID : 11004
+  severity: LOG_ERR
+  keys: action, rule, err
+  description:
+    'Logs errors for OSPFv2 FP creation/installation.'
+  event_description_template:
+      'Failed to {action} {rule} error : {err}'
+
+- event_name: OSPFv2_FP_SUCCESS
+  event_category: OSPFv2
+  event_ID : 11005
+  severity: LOG_INFO
+  keys: group_id, fp_id, stats_id
+  description:
+    'Logs for OSPFv2 FP creation/installation.'
+  event_description_template:
+      'OSPF all routers field entry added: group_id={group_id} fp_id={fp_id} stat_id={stats_id}'
+
+- event_name: OSPFv2_DR_FP_SUCCESS
+  event_category: OSPFv2
+  event_ID : 11006
+  severity: LOG_INFO
+  keys: group_id, fp_id, stats_id
+  description:
+    'Logs for OSPFv2 DR FP creation/installation.'
+  event_description_template:
+      'OSPF designated routers field entry added: group_id={group_id} fp_id={fp_id} stat_id={stats_id}'
+
+- event_name: SFLOW_HSFLOWD_FAILURE
+  event_category: SFLOW
+  event_ID : 12001
+  severity: LOG_ERR
+  keys: operation, error
+  description:
+    'Log a failure when trying to start/stop/restart host sFlow daemon.'
+  event_description_template:
+      'Failed to {operation} host sFlow agent : {error}'
+
+- event_name: SFLOW_HSFLOWD_CFG_FILE_FAILURE
+  event_category: SFLOW
+  event_ID : 12002
+  severity: LOG_ERR
+  keys: operation, file, error
+  description:
+    'Log a failure when trying to read/write to host sFlow configuration file.'
+  event_description_template:
+      'Failed to {operation} host sFlow configuration file {file} : {error}'
+
+- event_name: SFLOW_SIM_CFG_FAILURE
+  event_category: SFLOW
+  event_ID : 12003
+  severity: LOG_ERR
+  keys: operation, bridge, error
+  description:
+    'Log a failure when trying to configure sFlow on SIM OVS.'
+  event_description_template:
+      'Failed to {operation} sFlow configuration from bridge {bridge} : {error}'
+
+- event_name: SFLOW_IPTABLES_DEL_ALL_FAILURE
+  event_category: SFLOW
+  event_ID : 12004
+  severity: LOG_ERR
+  keys: error
+  description:
+    'Log a failure when trying to delete all iptable rules added for sFlow.'
+  event_description_template:
+      'Failed to delete all iptable rules : {error}'
+
+- event_name: SFLOW_IPTABLES_FAILURE
+  event_category: SFLOW
+  event_ID : 12005
+  severity: LOG_ERR
+  keys: operation, chain, port, error
+  description:
+    'Log a failure when trying to add/delete an iptable rule for sFlow.'
+  event_description_template:
+      'Failed to {operation} {chain} iptable rules for {port} : {error}'
+
+- event_name: SFLOW_INIT_FAILURE
+  event_category: SFLOW
+  event_ID : 12006
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs an error if sFlow initialization fails.'
+  event_description_template:
+      'sFlow initialization failed.'
+
+- event_name: SFLOW_CALLBACK_INVALID_PKT
+  event_category: SFLOW
+  event_ID : 12007
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs an error for an invalid packet in sFlow callback.'
+  event_description_template:
+      'Invalid packet sent by ASIC in sFlow callback.'
+
+- event_name: SFLOW_STATS_NETDEV_FAILURE
+  event_category: SFLOW
+  event_ID : 12008
+  severity: LOG_ERR
+  keys: interface
+  description:
+    'Logs an error if an interface does not have a netdev class.'
+  event_description_template:
+      'Unable to get netdev for interface {interface}'
+
+- event_name: SFLOW_FILTER_DESC_BLANK_FAILURE
+  event_category: SFLOW
+  event_ID : 12009
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs an error if the descrption to create a filter is blank.'
+  event_description_template:
+      'Failed to create KNET filter as description is blank'
+
+- event_name: SFLOW_FILTER_CREATE_FAILURE
+  event_category: SFLOW
+  event_ID : 12010
+  severity: LOG_ERR
+  keys: desc
+  description:
+    'Logs an error if sFlow KNET filter creation fails.'
+  event_description_template:
+      'Failed to create KNET filter for : {desc}'
+
+- event_name: SFLOW_SAMPLED_PKT_FAILURE
+  event_category: SFLOW
+  event_ID : 12011
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs an error if sampled packet is null.'
+  event_description_template:
+      'The received sampled packet is null'
+
+- event_name: SFLOW_AGENT_FAILURE
+  event_category: SFLOW
+  event_ID : 12012
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs an error if sFlow agent is not initialized.'
+  event_description_template:
+      'The sFlow agent is not initialized'
+
+- event_name: SFLOW_SAMPLER_FAILURE
+  event_category: SFLOW
+  event_ID : 12013
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs an error if sFlow sampler is not initialized.'
+  event_description_template:
+      'The sFlow sampler is not initialized'
+
+- event_name: SFLOW_INVALID_PORT_FAILURE
+  event_category: SFLOW
+  event_ID : 12014
+  severity: LOG_ERR
+  keys: port
+  description:
+    'Logs an error if sFlow is enabled/disabled on an invalid port.'
+  event_description_template:
+      'Cannot enable/disable sFlow on an invalid port : {port}'
+
+- event_name: SFLOW_SAMPLER_MISSING_FAILURE
+  event_category: SFLOW
+  event_ID : 12015
+  severity: LOG_ERR
+  keys: port
+  description:
+    'Logs an error if sFlow sampler is missing on a port.'
+  event_description_template:
+      'sFlow sampler is not available on port : {port}'
+
+- event_name: SFLOW_RECEIVER_MISSING_FAILURE
+  event_category: SFLOW
+  event_ID : 12016
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs an error if sFlow receiver is not available.'
+  event_description_template:
+      'sFlow receiver is not available'
+
+- event_name: SFLOW_FETCH_PORT_CONFIG_FAILURE
+  event_category: SFLOW
+  event_ID : 12017
+  severity: LOG_ERR
+  keys: error
+  description:
+    'Logs an error if port configuration is not available.'
+  event_description_template:
+      'Failed to retrieve port configuration : {error}'
+
+- event_name: SFLOW_SET_SAMPLING_RATE_FAILURE
+  event_category: SFLOW
+  event_ID : 12018
+  severity: LOG_ERR
+  keys: port, error
+  description:
+    'Logs an error if setting a sampling rate on a port fails.'
+  event_description_template:
+      'Failed to set sampling rate on port {port} : {error}'
+
+- event_name: SFLOW_GET_SAMPLING_RATE_FAILURE
+  event_category: SFLOW
+  event_ID : 12019
+  severity: LOG_ERR
+  keys: port, error
+  description:
+    'Logs an error if unable to retrieve sampling rate on a port.'
+  event_description_template:
+      'Failed to get sampling rate on port {port} : {error}'
+
+- event_name: SFLOW_AGENT_IP_CONFIG_FAILURE
+  event_category: SFLOW
+  event_ID : 12020
+  severity: LOG_ERR
+  keys: ip_address
+  description:
+    'Logs an error in case of invalid agent interface IP address configuration.'
+  event_description_template:
+      'Invalid agent interface IP address : {ip_address}'
+
+- event_name: SFLOW_COLLECTOR_IP_CONFIG_FAILURE
+  event_category: SFLOW
+  event_ID : 12021
+  severity: LOG_ERR
+  keys: ip_address
+  description:
+    'Logs an error in case of invalid collector IP address configuration.'
+  event_description_template:
+      'Invalid collector IP address : {ip_address}'
+
+- event_name: SFLOW_INTF_STATISTICS_FAILURE
+  event_category: SFLOW
+  event_ID : 12022
+  severity: LOG_ERR
+  keys: unit, port, error
+  description:
+    'Logs an error if unable to retrieve interface statistics.'
+  event_description_template:
+      'Failed to get interface statistics for unit {unit} port {port} : {error}'
+
+- event_name: NTP_ASSOC
+  event_category: NTP
+  event_ID : 13001
+  severity: LOG_INFO
+  keys: event, server, server_info
+  description:
+    'Logs NTP Association configuration changes'
+  event_description_template:
+    'NTP Association {event} : {server} {server_info}'
+
+- event_name: NTP_KEY
+  event_category: NTP
+  event_ID : 13002
+  severity: LOG_INFO
+  keys: trusted_keys, untrusted_keys
+  description:
+    'Logs NTP Trusted and Untrusted authentication-keys'
+  event_description_template:
+    'NTP Trusted keys {trusted_keys} and Untrusted keys {untrusted_keys}'
+
+- event_name: NTP_GLOBAL
+  event_category: NTP
+  event_ID : 13003
+  severity: LOG_INFO
+  keys: old, new
+  description:
+    'Logs NTP Authentication state changes'
+  event_description_template:
+    'NTP Authentication state change : {old} -> {new}'
+
+- event_name: SUPPORTABILITY_DAEMON_CRASH
+  event_category: SUPPORTABILITY
+  event_ID : 14001
+  severity: LOG_CRIT
+  keys: process, signal, timestamp
+  description:
+      'A daemon has crashed and generated core dump'
+  event_description_template:
+      '{process} crashed due to {signal},{timestamp}'
+
+# Events for LACP
+- event_name: LAG_CREATE
+  event_category: LACP
+  event_ID: 15001
+  severity: LOG_INFO
+  keys: lag_id
+  event_description_template: 'Dynamic LAG {lag_id} created'
+
+- event_name: LAG_DELETE
+  event_category: LACP
+  event_ID: 15002
+  severity: LOG_INFO
+  keys: lag_id
+  event_description_template: 'Dynamic LAG {lag_id} deleted'
+
+- event_name: LAG_INTERFACE_ADD
+  event_category: LACP
+  event_ID: 15003
+  severity: LOG_INFO
+  keys: lag_id, intf_id
+  event_description_template: 'Interface {intf_id} added to LAG {lag_id} '
+
+- event_name: LAG_INTERFACE_REMOVE
+  event_category: LACP
+  event_ID: 15004
+  severity: LOG_INFO
+  keys: lag_id, intf_id
+  event_description_template: 'Interface {intf_id} removed from LAG {lag_id} '
+
+- event_name: LACP_SYSTEM_PRIORITY_SET
+  event_category: LACP
+  event_ID: 15005
+  severity: LOG_INFO
+  keys: system_priority
+  event_description_template: 'LACP system priority set to {system_priority} '
+
+- event_name: LACP_MODE_SET
+  event_category: LACP
+  event_ID: 15006
+  severity: LOG_INFO
+  keys: lag_id, lacp_mode
+  event_description_template: 'LACP mode set to {lacp_mode} for LAG {lag_id} '
+
+- event_name: LACP_SYSTEM_ID_SET
+  event_category: LACP
+  event_ID: 15007
+  severity: LOG_INFO
+  keys: system_id
+  event_description_template: 'LACP system ID set to {system_id} '
+
+- event_name: LACP_RATE_SET
+  event_category: LACP
+  event_ID: 15008
+  severity: LOG_INFO
+  keys: lag_id, lacp_rate
+  event_description_template: 'LACP rate set to {lacp_rate} for LAG {lag_id} '
+
+- event_name: LACP_PARTNER_DETECTED
+  event_category: LACP
+  event_ID: 15009
+  severity: LOG_INFO
+  keys: intf_id, lag_id, partner_sys_id
+  event_description_template:
+      'Partner is detected for interface {intf_id} LAG {lag_id} : {partner_sys_id} '
+
+- event_name: LACP_PARTNER_OUT_OF_SYNC
+  event_category: LACP
+  event_ID: 15010
+  severity: LOG_WARN
+  keys: intf_id, lag_id, actor_state, partner_state
+  event_description_template:
+      'Partner is out of sync for interface {intf_id} LAG {lag_id}. Actor state: {actor_state}, partner state {partner_state} '
+
+- event_name: LACP_PARTNER_TIMEOUT
+  event_category: LACP
+  event_ID: 15011
+  severity: LOG_WARN
+  keys: intf_id, lag_id, fsm_state
+  event_description_template:
+      'Partner is lost (timed out) for interface {intf_id} LAG {lag_id}. State: {fsm_state} '
+
+- event_name: LAG_CREATE_FAILED
+  event_category: LACP
+  event_ID: 15012
+  severity: LOG_ERR
+  keys: lag_id
+  event_description_template: 'Failed to create LAG {lag_id} '
+
+- event_name: TRUNK_SET_SUCCEEDS
+  event_category: LAG
+  event_ID : 16001
+  severity: LOG_DEBUG
+  keys: unit, lag_id
+  description:
+    'Logs the creation of trunk.'
+  event_description_template:
+      'Trunk set succeeds unit {unit} lag_id {lag_id}'
+
+- event_name: LAG_CREATION_FAILED
+  event_category: LAG
+  event_ID : 16002
+  severity: LOG_ERR
+  keys: unit, lag_id, rc, error
+  description:
+    'Logs the failure of trunk creation.'
+  event_description_template:
+      'Lag creation failed unit {unit} lag_id {lag_id} rc {rc} error {error}'
+
+- event_name: DESTROY_LAG_FAILED
+  event_category: LAG
+  event_ID : 16003
+  severity: LOG_ERR
+  keys: unit, lag_id, rc, error
+  description:
+    'Logs the failure of trunk destroy.'
+  event_description_template:
+      'Destroy lag failed on unit {unit} lag_id {lag_id} rc {rc} error {error}'
+
+- event_name: TRUNK_MEMBER_ADD_SUCCEEDS
+  event_category: LAG
+  event_ID : 16004
+  severity: LOG_DEBUG
+  keys: unit, hw_port, tid
+  description:
+    'Logs the addition of port to trunk.'
+  event_description_template:
+      'Trunk member add port succeeds on unit {unit} hw_port {hw_port} tid {tid}'
+
+- event_name: TRUNK_PORT_ATTACH_ERROR
+  event_category: LAG
+  event_ID : 16005
+  severity: LOG_ERR
+  keys: hw_port, tid, rc, error
+  description:
+    'Logs the failure of addition of port to trunk.'
+  event_description_template:
+      'Trunk port attach error on hw_port {hw_port} tid {tid} rc {rc} {error}'
+
+- event_name: FAILED_TO_SET_EGRESS_ENABLE
+  event_category: LAG
+  event_ID : 16006
+  severity: LOG_ERR
+  keys: hw_port, tid, rc, error
+  description:
+    'Logs the failure to set egress enable.'
+  event_description_template:
+      'Failed to set egress enable on hw_port {hw_port} tid {tid} rc {rc} error {error}'
+
+- event_name: FAILED_TO_DELETE_PORT
+  event_category: LAG
+  event_ID : 16007
+  severity: LOG_ERR
+  keys: hw_port, tid, rc, error
+  description:
+    'Logs the failure to delete a port.'
+  event_description_template:
+      'Failed to delete hw_port {hw_port} from tid {tid} rc {rc} error {error}'
+
+- event_name: TRUNK_PSC_SET_FAILED
+  event_category: LAG
+  event_ID : 16008
+  severity: LOG_ERR
+  keys: unit, lag_id, psc, rc, error
+  description:
+    'Logs the failure to set port selection criteria.'
+  event_description_template:
+      'Trunk psc set failed on unit {unit} lag_id {lag_id} psc {psc} rc {rc} error {error}'
+
+- event_name: LAG_LOAD_BAL_MODE
+  event_category: LAG
+  event_ID : 16009
+  severity: LOG_INFO
+  keys: interface, mode
+  description:
+      'logs to set load balancing mode for LAG L2/L3 interfaces.'
+  event_description_template:
+      'LAG {interface}, set to load balance mode to {mode}'
+
+- event_name: LAG_ADD_PORT_BITMAP
+  event_category: LAG
+  event_ID : 16010
+  severity: LOG_INFO
+  keys: interface, port, l2_l3_flag
+  description:
+      'logs to add port to LAG.'
+  event_description_template:
+      'Add port {port} to LAG {interface}'
+
+- event_name: LAG_REM_PORT_BITMAP
+  event_category: LAG
+  event_ID : 16011
+  severity: LOG_INFO
+  keys: interface, port
+  description:
+      'logs to remove port from LAG.'
+  event_description_template:
+      'Remove port {port} from LAG {interface}'
+
+- event_name: L3_LAG_ADD_VLAN_PORT_BITMAP
+  event_category: LAG
+  event_ID : 16012
+  severity: LOG_INFO
+  keys: interface, port, vlan
+  description:
+      'logs to add port to L3 LAG.'
+  event_description_template:
+      'Add port {port} to vlan {vlan} for L3 LAG {interface}'
+
+- event_name: L3_LAG_REM_VLAN_PORT_BITMAP
+  event_category: LAG
+  event_ID : 16013
+  severity: LOG_INFO
+  keys: interface, port, vlan
+  description:
+      'logs to remove port from LAG.'
+  event_description_template:
+      'Remove port {port} to vlan {vlan} for L3 LAG {interface}'
+
+- event_name: L3_LAG_DELETE
+  event_category: LAG
+  event_ID : 16014
+  severity: LOG_INFO
+  keys: interface
+  description:
+      'logs to destroy L3 LAG.'
+  event_description_template:
+      'Destroy L3 LAG interface {interface}'
+
+- event_name: COPP_INITIALIZATION_FAILURE
+  event_category: COPP
+  event_ID : 17001
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs COPP initialization failure.'
+  event_description_template:
+      'COPP initialization failed'
+
+- event_name: COPP_INITIALIZATION_SUCCESS
+  event_category: COPP
+  event_ID : 17002
+  severity: LOG_INFO
+  keys: NA
+  description:
+    'Logs COPP initialization success.'
+  event_description_template:
+      'COPP initialization successful'
+
+- event_name: COPP_INGRESS_FP_GROUP_CREATE_FAILURE
+  event_category: COPP
+  event_ID : 17003
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs ingress field processor group creation failure.'
+  event_description_template:
+      'Ingress FP Group create failed'
+
+- event_name: COPP_EGRESS_FP_GROUP_CREATE_FAILURE
+  event_category: COPP
+  event_ID : 17004
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs egress field processor group creation failure.'
+  event_description_template:
+      'Egress FP Group create failed'
+
+- event_name: COPP_INIT_DEFAULTS_FAILURE
+  event_category: COPP
+  event_ID : 17005
+  severity: LOG_ERR
+  keys: NA
+  description:
+    'Logs failure for initialization of default values.'
+  event_description_template:
+      'Programming defaults failed'
+
+- event_name: COPP_CLASS_PACKET_RULE_FAILURE
+  event_category: COPP
+  event_ID : 17006
+  severity: LOG_ERR
+  keys: class
+  description:
+    'Logs failure of programming queue for a CoPP packet class.'
+  event_description_template:
+      'Packet class programming failed for {class}'
+
+- event_name: COPP_CLASS_INGRESS_FP_CREATE_FAILURE
+  event_category: COPP
+  event_ID : 17007
+  severity: LOG_ERR
+  keys: class
+  description:
+    'Logs failure of programming ingress field processor for a COPP class.'
+  event_description_template:
+      'Failed to program ingress field processor rule for {class}'
+
+- event_name: COPP_CLASS_EGRESS_FP_CREATE_FAILURE
+  event_category: COPP
+  event_ID : 17008
+  severity: LOG_ERR
+  keys: class
+  description:
+    'Logs failure of programming egress field processor for a COPP class.'
+  event_description_template:
+      'Failed to program egress rule for {class}'
+
+- event_name: VLANINTERFACE_L3INTF_CREATE_ERR
+  event_category: VLANINTERFACE
+  event_ID : 18001
+  severity: LOG_ERR
+  keys: vlan, err
+  description:
+      'logs errors while creating vlaninterface.'
+  event_description_template:
+      'Vlaninterface vlan{vlan}, failed to create an l3 interface, error: {err}'
+
+- event_name: VLANINTERFACE_CREATE
+  event_category: VLANINTERFACE
+  event_ID : 18002
+  severity: LOG_INFO
+  keys: interface
+  description:
+       'logs to create vlan interface.'
+  event_description_template:
+       'Vlan Interface {interface}, created'
+
+- event_name: L3INTERFACE_CREATE
+  event_category: L3INTERFACE
+  event_ID : 19001
+  severity: LOG_INFO
+  keys: interface
+  description:
+       'logs to create L3 interface.'
+  event_description_template:
+       'L3-Interface {interface}, created'
+
+- event_name: L3INTERFACE_DELETE
+  event_category: L3INTERFACE
+  event_ID : 19002
+  severity: LOG_INFO
+  keys: interface
+  description:
+      'logs to delete L3 interface.'
+  event_description_template:
+      'L3-Interface {interface}, deleted'
+
+- event_name: L3INTERFACE_ADMIN_STATE
+  event_category: L3INTERFACE
+  event_ID : 19003
+  severity: LOG_INFO
+  keys: interface, state
+  description:
+      'logs for admin state of L3 interface.'
+  event_description_template:
+      'L3-Interface {interface}, configured administratively {state}'
+
+- event_name: L3INTERFACE_VLAN_CREATE_ERR
+  event_category: L3INTERFACE
+  event_ID : 19004
+  severity: LOG_ERR
+  keys: interface, vlanid
+  description:
+      'logs errors while creating vlan for layer 3 interfaces.'
+  event_description_template:
+      'Failed to create {vlanid} for layer 3 interface {interface}'
+
+- event_name: L3INTERFACE_VLAN_DESTROY_ERR
+  event_category: L3INTERFACE
+  event_ID : 19005
+  severity: LOG_ERR
+  keys: interface, vlanid, err
+  description:
+      'logs errors while destroying vlan for layer 3 interfaces.'
+  event_description_template:
+      'Failed to destroy layer 3 interface {interface} vlan {vlanid}, error: {err}'
+
+- event_name: L3INTERFACE_DELETE_ERR
+  event_category: L3INTERFACE
+  event_ID : 19006
+  severity: LOG_ERR
+  keys: interface, err
+  description:
+      'logs errors while destroying layer 3 interface.'
+  event_description_template:
+      'Failed to delete an l3 interface {interface}, error: {err}'
+
+- event_name: L3INTERFACE_ADD_HOST_ERR
+  event_category: L3INTERFACE
+  event_ID : 19007
+  severity: LOG_ERR
+  keys: ipaddr, egressid, err
+  description:
+      'logs errors while adding l3 hosts.'
+  event_description_template:
+      'Failed to add L3 host entry for ip {ipaddr} egress_id {egressid}, error: {err}'
+
+- event_name: L3INTERFACE_ADD_HOST
+  event_category: L3INTERFACE
+  event_ID : 19008
+  severity: LOG_INFO
+  keys: ipaddr, egressid
+  description:
+      'logs while adding l3 hosts.'
+  event_description_template:
+      'Added L3 host entry for ip {ipaddr}, egress_id {egressid}'
+
+- event_name: L3INTERFACE_DEL_HOST_ERR
+  event_category: L3INTERFACE
+  event_ID : 19009
+  severity: LOG_ERR
+  keys: ipaddr, egressid, err
+  description:
+      'logs errors while deleting l3 hosts.'
+  event_description_template:
+      'Failed to delete L3 host entry for ip {ipaddr} egress_id {egressid}, error: {err}'
+
+- event_name: L3INTERFACE_DEL_HOST
+  event_category: L3INTERFACE
+  event_ID : 19010
+  severity: LOG_INFO
+  keys: ipaddr, egressid
+  description:
+      'logs while deleting l3 hosts.'
+  event_description_template:
+      'Deleted L3 host entry for ip {ipaddr}, egress_id {egressid}'
+
+- event_name: L3INTERFACE_HITBIT_FAILURE
+  event_category: L3INTERFACE
+  event_ID : 19011
+  severity: LOG_ERR
+  keys: ipaddr
+  description:
+      'logs errors to get L3 host hit for a specific ip.'
+  event_description_template:
+      'Failed to get L3 host hit for ip {ipaddr}'
+
+- event_name: L3INTERFACE_ERR
+  event_category: L3INTERFACE
+  event_ID : 19012
+  severity: LOG_ERR
+  keys: err
+  description:
+      'logs for L3 setup errors.'
+  event_description_template:
+      'L3 interface error : {err}'
+
+- event_name: L3INTERFACE_NEXTHOP_ADD
+  event_category: L3INTERFACE
+  event_ID : 19013
+  severity: LOG_INFO
+  keys: nexthop, egress_id, prefix
+  description:
+      'logs for nexthop addition.'
+  event_description_template:
+      'Added Nexthop {nexthop}, egress_id {egress_id}, for route {prefix}'
+
+- event_name: L3INTERFACE_NEXTHOP_DELETE
+  event_category: L3INTERFACE
+  event_ID : 19014
+  severity: LOG_INFO
+  keys: nexthop, prefix
+  description:
+      'logs for nexthop deletion.'
+  event_description_template:
+      'Delete Nexthop {nexthop} for route {prefix}'
+
+- event_name: L3INTERFACE_ROUTE_ADD
+  event_category: L3INTERFACE
+  event_ID : 19015
+  severity: LOG_INFO
+  keys: prefix
+  description:
+      'logs for route addition.'
+  event_description_template:
+      'Added route {prefix}'
+
+- event_name: L3INTERFACE_ROUTE_UPDATE
+  event_category: L3INTERFACE
+  event_ID : 19016
+  severity: LOG_INFO
+  keys: state
+  description:
+      'logs for route update.'
+  event_description_template:
+      'Update: route state : {state}'
+
+- event_name: L3INTERFACE_ROUTE_DELETE
+  event_category: L3INTERFACE
+  event_ID : 19017
+  severity: LOG_INFO
+  keys: prefix
+  description:
+      'logs for route deletion.'
+  event_description_template:
+      'Delete route {prefix}'
+
+- event_name: L3INTERFACE_ROUTE_DELETE_ERR
+  event_category: L3INTERFACE
+  event_ID : 19018
+  severity: LOG_ERR
+  keys: prefix, err
+  description:
+      'logs error for route deletion.'
+  event_description_template:
+      'Delete route {prefix}, error: {err}'
+
+- event_name: L3INTERFACE_ROUTE_ADD_ERR
+  event_category: L3INTERFACE
+  event_ID : 19019
+  severity: LOG_ERR
+  keys: prefix, err
+  description:
+      'logs error for route aditiontion.'
+  event_description_template:
+      'Add route {prefix}, error: {err}'
+
+- event_name: L3INTERFACE_CREATE_EGRESS_OBJ_ERR
+  event_category: L3INTERFACE
+  event_ID : 19020
+  severity: LOG_ERR
+  keys: port, err
+  description:
+      'logs errors for egress object creation.'
+  event_description_template:
+      'Error creating egress object for port {port}, error: {err}'
+
+- event_name: L3INTERFACE_CREATE_EGRESS_OBJ
+  event_category: L3INTERFACE
+  event_ID : 19021
+  severity: LOG_INFO
+  keys: egress_id, port, intf
+  description:
+      'logs for egress object creation.'
+  event_description_template:
+      'Created L3 egress ID {egress_id} for port {port} intf {intf}'
+
+- event_name: L3INTERFACE_DESTROY_EGRESS_OBJ_ERR
+  event_category: L3INTERFACE
+  event_ID : 19022
+  severity: LOG_ERR
+  keys: port, err
+  description:
+      'logs errors for egress object deletion.'
+  event_description_template:
+      'Error deleting egress object for port {port}, error: {err}'
+
+- event_name: L3INTERFACE_DESTROY_EGRESS_OBJ
+  event_category: L3INTERFACE
+  event_ID : 19023
+  severity: LOG_INFO
+  keys: egress_id, port
+  description:
+      'logs for egress object deletion.'
+  event_description_template:
+      'Deleted L3 egress ID {egress_id} for port {port}'
+
+- event_name: ECMP_CREATE_ERR
+  event_category: ECMP
+  event_ID : 20001
+  severity: LOG_ERR
+  keys: route, err
+  description:
+      'logs errors while creating ecmp group.'
+  event_description_template:
+      'Failed to update ecmp object for route {route}, error: {err}'
+
+- event_name: ECMP_CREATE
+  event_category: ECMP
+  event_ID : 20002
+  severity: LOG_INFO
+  keys: route
+  description:
+      'logs while creating ecmp group.'
+  event_description_template:
+      'Update ecmp object for route {route}'
+
+- event_name: ECMP_DELETE_ERR
+  event_category: ECMP
+  event_ID : 20003
+  severity: LOG_ERR
+  keys: egressid, err
+  description:
+      'logs errors while deleting ecmp group.'
+  event_description_template:
+      'Failed to delete ecmp egress object {egressid}, error: {err}'
+
+- event_name: ECMP_DELETE
+  event_category: ECMP
+  event_ID : 20004
+  severity: LOG_INFO
+  keys: egressid
+  description:
+      'logs while deleting ecmp group.'
+  event_description_template:
+      'Delete ecmp egress object {egressid}'
+
+- event_name: ECMP_ERR
+  event_category: ECMP
+  event_ID : 20005
+  severity: LOG_ERR
+  keys: err
+  description:
+      'logs for ECMP setup errors.'
+  event_description_template:
+      'ECMP error : {err}'
+
+- event_name: ZEBRA_OVSDB_INIT_COMPLETE
+  event_category: ZEBRA
+  event_ID : 21001
+  severity: LOG_INFO
+  keys: NA
+  event_description_template:
+      'Openswitch Zebra Daemon started'
+
+- event_name: ZEBRA_OVSDB_EXIT
+  event_category: ZEBRA
+  event_ID : 21002
+  severity: LOG_INFO
+  keys: NA
+  event_description_template:
+      'Openswitch Zebra Daemon ended'
+
+- event_name: ZEBRA_ROUTE
+  event_category: ZEBRA
+  event_ID : 21003
+  severity: LOG_DEBUG
+  keys: routemsg, prefix
+  event_description_template:
+      '{routemsg} for route prefix {prefix}'
+
+- event_name: ZEBRA_ROUTE_ADD
+  event_category: ZEBRA
+  event_ID : 21004
+  severity: LOG_DEBUG
+  keys: prefix, protocol
+  event_description_template:
+      'Adding a route for prefix {prefix} protocol {protocol}'
+
+- event_name: ZEBRA_ROUTE_ADD_NEXTHOP_EVENTS
+  event_category: ZEBRA
+  event_ID : 21005
+  severity: LOG_DEBUG
+  keys: prefix, nexthop
+  event_description_template:
+      'Processing route {prefix} Inserted/Modified nexthop {nexthop}'
+
+- event_name: ZEBRA_INTERFACE
+  event_category: ZEBRA
+  event_ID : 21006
+  severity: LOG_DEBUG
+  keys: interface_name, admin_state
+  event_description_template:
+      'Interface {interface_name} admin state modified to {admin_state}'
+
+- event_name: ZEBRA_ROUTE_DEL
+  event_category: ZEBRA
+  event_ID : 21007
+  severity: LOG_DEBUG
+  keys: prefix
+  event_description_template:
+      'Need to delete OVSDB route for prefix {prefix}'
+
+- event_name: ZEBRA_PORT
+  event_category: ZEBRA
+  event_ID : 21008
+  severity: LOG_DEBUG
+  keys: port_msg, port_name
+  event_description_template:
+      '{port_msg} {port_name}'
+
+- event_name: ZEBRA_PORT_STATE
+  event_category: ZEBRA
+  event_ID : 21009
+  severity: LOG_DEBUG
+  keys: port_name, port_old_state, port_new_state
+  event_description_template:
+      'port {port_name} changed from {port_old_state} to {port_new_state}'
+
+- event_name: ZEBRA_NEXTHOP_STATE
+  event_category: ZEBRA
+  event_ID : 21010
+  severity: LOG_DEBUG
+  keys: nexthop_port, msg
+  event_description_template:
+      'next-hop port {nexthop_port} {msg}'
+
+- event_name: ZEBRA_NEXTHOP_STATE_CHANGE
+  event_category: ZEBRA
+  event_ID : 21011
+  severity: LOG_DEBUG
+  keys: nexthop_port, old_state, new_state
+  event_description_template:
+      'next-hop port {nexthop_port} old state {old_state} to {new_state}'
+
+- event_name: ZEBRA_RTM
+  event_category: ZEBRA
+  event_ID : 21012
+  severity: LOG_DEBUG
+  keys: rtm_type, route_address, prefixlen
+  event_description_template:
+      '{rtm_type} {route_address}/{prefixlen}'
+
+- event_name: ZEBRA_NETLINK_ERR
+  event_category: ZEBRA
+  event_ID : 21013
+  severity: LOG_ERR
+  keys: err_desc, nlsock, errno
+  event_description_template:
+      '{nlsock} {err_desc} {errno}'
+
+- event_name: DHCP_LEASE_ADD
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22001
+  severity: LOG_INFO
+  keys: expiry_time, mac, ip, host, client_id
+  description:
+    'Logs DHCP lease addition'
+  event_description_template:
+    'DHCP Lease added {expiry_time} {mac} {ip} {host} {client_id}'
+
+- event_name: DHCP_LEASE_DELETE
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22002
+  severity: LOG_INFO
+  keys: expiry_time, mac, ip, host, client_id
+  description:
+    'Logs DHCP lease deletion'
+  event_description_template:
+    'DHCP Lease deleted {expiry_time} {mac} {ip} {host} {client_id}'
+
+- event_name: DHCP_LEASE_UPDATE
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22003
+  severity: LOG_INFO
+  keys: expiry_time, mac, ip, host, client_id
+  description:
+    'Logs DHCP lease updation'
+  event_description_template:
+    'DHCP Lease updated {expiry_time} {mac} {ip} {host} {client_id}'
+
+- event_name: DHCP_LEASE_ADD_FAILED
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22004
+  severity: LOG_ERR
+  keys: expiry_time, mac, ip, host, client_id
+  description:
+    'Logs failure in DHCP lease addition'
+  event_description_template:
+    'DHCP Lease addition failed {expiry_time} {mac} {ip} {host} {client_id}'
+
+- event_name: DHCP_LEASE_DELETE_FAILED
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22005
+  severity: LOG_ERR
+  keys: expiry_time, mac, ip, host, client_id
+  description:
+    'Logs failure in DHCP lease deletion'
+  event_description_template:
+    'DHCP Lease deletion failed {expiry_time} {mac} {ip} {host} {client_id}'
+
+- event_name: DHCP_LEASE_UPDATE_FAILED
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22006
+  severity: LOG_ERR
+  keys: expiry_time, mac, ip, host, client_id
+  description:
+    'Logs failure in DHCP lease updation'
+  event_description_template:
+    'DHCP Lease update failed {expiry_time} {mac} {ip} {host} {client_id}'
+
+- event_name: DNSMASQ_SUCCESS
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22007
+  severity: LOG_INFO
+  keys: dnsmasq_command
+  description:
+    'Logs DNSMASQ successful restart'
+  event_description_template:
+    'DNSMASQ restarted successfully {dnsmasq_command}'
+
+- event_name: DNSMASQ_FAILURE
+  event_category: DHCP-TFTP-SERVER
+  event_ID : 22008
+  severity: LOG_ERR
+  keys: dnsmasq_command
+  description:
+    'Logs failure to restart DNSMASQ'
+  event_description_template:
+    'Failed to restart DNSMASQ {dnsmasq_command}'
+
+- event_name: MSTP_ENABLED
+  event_category: MSTP
+  event_ID : 23001
+  severity: LOG_INFO
+  keys: NA
+  description:
+    'This command enables the MSTP (Multiple Spanning-tree Protocol) feature in the device.'
+  event_description_template:
+    'MSTP Enabled'
+
+- event_name: MSTP_DISABLED
+  event_category: MSTP
+  event_ID : 23002
+  severity: LOG_INFO
+  keys: NA
+  description:
+    'This command disables the MSTP (Multiple Spanning-tree Protocol) feature in the device.'
+  event_description_template:
+    'MSTP Disabled'
+
+- event_name: MSTP_BAD_CONFIG
+  event_category: MSTP
+  event_ID : 23003
+  severity: LOG_WARN
+  keys: config_parameter, value
+  description:
+    'This log event informs the user that the MSTP config parameter is bad'
+  event_description_template:
+    '{config_parameter} should be {value}'
+
+- event_name: MSTP_BAD_BPDU
+  event_category: MSTP
+  event_ID : 23004
+  severity: LOG_WARN
+  keys: config_parameter, value
+  description:
+    'This log event informs the user that the Switch received a BPDU with a bad config'
+  event_description_template:
+    'BPDU has {config_parameter} from port {value}'
+
+- event_name: MSTP_BAD_DYNAMIC_REQ
+  event_category: MSTP
+  event_ID : 23005
+  severity: LOG_WARN
+  keys: reconfig_parameter
+  description:
+    'This log event informs the user that the MSTP reconfig parameter is bad'
+  event_description_template:
+    'Bad reconfiguration request: {reconfig_parameter}'
+
+- event_name: MSTP_NEW_ROOT
+  event_category: MSTP
+  event_ID : 23006
+  severity: LOG_INFO
+  keys: proto, old_priority, old_mac, new_priority, new_mac
+  description:
+    'This log event informs the user that the MSTP root has changed'
+  event_description_template:
+    '{proto} - Root changed from {old_priority}: {old_mac} to {new_priority}: {new_mac}'
+
+- event_name: MSTP_ERROR_DISABLED_PORT
+  event_category: MSTP
+  event_ID : 23007
+  severity: LOG_WARN
+  keys: port, sec
+  description:
+    'This log event informs the user BPDU received on protected port'
+  event_description_template:
+    'Port {port} disabled {sec}- BPDU received on protected port'
+
+- event_name: MSTP_RX_STARVATION
+  event_category: MSTP
+  event_ID : 23008
+  severity: LOG_INFO
+  keys: proto, pkt_type, port, priority_mac
+  description:
+    'This log event informs the user that the Rx is starved in paticular port'
+  event_description_template:
+    '{proto} starved for {pkt_type} on port {port} from {priority_mac}'
+
+- event_name: MSTP_TO_INCONSISTENT
+  event_category: MSTP
+  event_ID : 23009
+  severity: LOG_INFO
+  keys: port, proto
+  description:
+    'This log event informs the user that the MSTP is in inconsistent state'
+  event_description_template:
+    'BPDU loss- port {port} moved to inconsistent state for {proto}'
+
+- event_name: MSTP_OUT_INCONSISTENT
+  event_category: MSTP
+  event_ID : 23010
+  severity: LOG_INFO
+  keys: port, proto
+  description:
+    'This log event informs the user that the MSTP is out of inconsistent state'
+  event_description_template:
+    'Port {port} moved out of inconsistent state for {proto}'
+
+
+- event_name: MSTP_TC_RECV
+  event_category: MSTP
+  event_ID : 23011
+  severity: LOG_INFO
+  keys: port, proto, mac
+  description:
+    'This log event informs the user that the MSTP topology change is received'
+  event_description_template:
+    'Topology Change received on port {port} for {proto} from source: {mac}'
+
+- event_name: MSTP_TC_ORIGINATED
+  event_category: MSTP
+  event_ID : 23012
+  severity: LOG_INFO
+  keys: proto, port, state
+  description:
+    'This log event informs the user that the MSTP topology change is generated'
+  event_description_template:
+    '{proto} - Topology Change generated on port {port} going in to {state}'
+
+- event_name: MSTP_BPDU_RECVD_ON_EDGE_PORT
+  event_category: MSTP
+  event_ID : 23013
+  severity: LOG_INFO
+  keys: port
+  description:
+    'This log event informs the user that the BPDU received on admin edge port'
+  event_description_template:
+    'BPDU received on admin edge port {port}'
+
+- event_name: MSTP_CIST_PORT_BLOCK
+  event_category: MSTP
+  event_ID : 23014
+  severity: LOG_INFO
+  keys: port
+  description:
+    'This log event informs the user that the CIST port is blocked'
+  event_description_template:
+    'Port {port} blocked on CIST'
+
+- event_name: MSTP_CIST_PORT_UNBLOCK
+  event_category: MSTP
+  event_ID : 23015
+  severity: LOG_INFO
+  keys: port
+  description:
+    'This log event informs the user that the CIST port is unblocked'
+  event_description_template:
+    'Port {port} unblocked on CIST'
+
+- event_name: MSTP_MSTI_PORT_BLOCK
+  event_category: MSTP
+  event_ID : 23016
+  severity: LOG_INFO
+  keys: port, instance
+  description:
+    'This log event informs the user that the MSTI port is blocked'
+  event_description_template:
+    'Port {port} blocked on MST{instance}'
+
+- event_name: MSTP_MSTI_PORT_UNBLOCK
+  event_category: MSTP
+  event_ID : 23017
+  severity: LOG_INFO
+  keys: port, instance
+  description:
+    'This log event informs the user that the MSTI port is unblocked'
+  event_description_template:
+    'Port {port} unblocked on MST{instance}'
+
+- event_name: MSTP_NEW_ROOT_PORT
+  event_category: MSTP
+  event_ID : 23018
+  severity: LOG_INFO
+  keys: proto, old_port, new_port
+  description:
+    'This log event informs the user that the root port is changed'
+  event_description_template:
+    '{proto} Root Port changed from {old_port} to {new_port}'
+
+- event_name: HW_CREATE_VLAN_SUCCESS
+  event_category: VLAN
+  event_ID : 24001
+  severity: LOG_INFO
+  keys: vid
+  description:
+    'This log event informs the user that VLAN is created in Hardware'
+  event_description_template:
+    'VLAN {vid} created in hardware'
+
+- event_name: HW_CREATE_VLAN_FAILURE
+  event_category: VLAN
+  event_ID : 24002
+  severity: LOG_ERR
+  keys: vid
+  description:
+    'This log event informs the user that VLAN is not created in Hardware'
+  event_description_template:
+    'Failed to create VLAN {vid} in Hardware'
+
+- event_name: HW_DESTROY_VLAN_SUCCESS
+  event_category: VLAN
+  event_ID : 24003
+  severity: LOG_INFO
+  keys: vid
+  description:
+    'This log event informs the user that VLAN is removed from Hardware'
+  event_description_template:
+    'VLAN {vid} removed from hardware'
+
+- event_name: HW_DESTROY_VLAN_FAILURE
+  event_category: VLAN
+  event_ID : 24004
+  severity: LOG_ERR
+  keys: vid
+  description:
+    'This log event informs the user that VLAN is not removed from Hardware'
+  event_description_template:
+    'Failed to remove VLAN {vid} from hardware'
+
+- event_name: ALLOCATE_INTERNAL_VLAN
+  event_category: VLAN
+  event_ID : 24005
+  severity: LOG_INFO
+  keys: vid, port
+  description:
+    'This log event informs that internal VLAN is allocated to port'
+  event_description_template:
+    'Internal VLAN {vid} is allocated to port {port}'
+
+- event_name: ALLOCATE_INTERNAL_VLAN_ERR
+  event_category: VLAN
+  event_ID : 24006
+  severity: LOG_ERR
+  keys: port
+  description:
+    'This log event informs that internal VLAN is not allocated'
+  event_description_template:
+    'Failed to allocate internal VLAN to port ${port}'
+
+- event_name: CPU_RX_FP_ERR
+  event_category: CPU-RX
+  event_ID : 25001
+  severity: LOG_ERR
+  keys: action, err
+  description:
+    'Logs errors for field group creation.'
+  event_description_template:
+    'Failed to {action} error : {err}'
+
+- event_name: CPU_RX_FP_SUCCESS
+  event_category: CPU-RX
+  event_ID : 25002
+  severity: LOG_INFO
+  keys: group_id
+  description:
+    'Logs errors for field group creation.'
+  event_description_template:
+    'Field group created: group_id={group_id}'
+
+- event_name: BFD_FP_ERR
+  event_category: BFD
+  event_ID : 26001
+  severity: LOG_ERR
+  keys: action, rule, err
+  description:
+    'Logs errors for BFD FP creation/installation.'
+  event_description_template:
+    'Failed to {action} {rule} error : {err}'
+
+- event_name: BFD_SINGLE_HOP_FP_SUCCESS
+  event_category: BFD
+  event_ID : 26002
+  severity: LOG_INFO
+  keys: group_id, fp_id
+  description:
+    'Logs errors for BFD single hop FP creation/installation.'
+  event_description_template:
+    'BFD Single hop field entry added: group_id={group_id} fp_id={fp_id}'
+
+- event_name: BFD_MULTI_HOP_FP_SUCCESS
+  event_category: BFD
+  event_ID : 26003
+  severity: LOG_INFO
+  keys: group_id, fp_id
+  description:
+    'Logs errors for BFD multi hop FP creation/installation.'
+  event_description_template:
+    'BFD Multi hop field entry added: group_id={group_id} fp_id={fp_id}'
+
+- event_name: AAA_CONFIG
+  event_category: AAA
+  event_ID : 27001
+  severity: LOG_INFO
+  keys: type, event
+  description:
+    'Logs AAA Authentication/Authorization/fail-through'
+  event_description_template:
+    'AAA {type} update : {event}'
+
+- event_name: TACACS
+  event_category: AAA
+  event_ID : 27002
+  severity: LOG_INFO
+  keys: type, action, event
+  description:
+    'Logs TACACS+ server update, server group update and global default update'
+  event_description_template:
+    'TACACS {type} {action} : {event}'
+
+- event_name: RADIUS
+  event_category: AAA
+  event_ID : 27003
+  severity: LOG_INFO
+  keys: type, action, event
+  description:
+    'Logs RADIUS server update, server group update and global default update'
+  event_description_template:
+    'RADIUS {type} {action} : {event}'
