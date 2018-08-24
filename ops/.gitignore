@@ -1,0 +1,15 @@
+schema/dhcp_leases.ovsschema
+schema/vswitch.ovsschema
+/build
+.*.swp
+*~
+/Makefile
+/CMakeCache.txt
+/CMakeFiles/
+/cmake_install.cmake
+/install_manifest.txt
+/schema/CMakeFiles/
+/schema/Makefile
+/schema/cmake_install.cmake
+/schema/bin/*.pyc
+/schema/lib/*.pyc
